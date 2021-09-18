@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile-nginx
+    image: nginx-fancyindex:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./web/default.conf:/etc/nginx/conf.d/default.conf
+      - ./log:/var/www/html
+    environment:
+      - NGINX_HOST=foobar.com
+      - NGINX_PORT=80
