@@ -1,7 +1,7 @@
 version: 1
 formatters:
   simple_fmt:
-    format: '%(process)d - %(asctime)s - %(name)s - %(levelname)s: %(message)s'
+    format: '%(asctime)s - %(process)d - %(name)s - %(levelname)s: %(message)s'
 handlers:
   console_process:
     class: logging.StreamHandler

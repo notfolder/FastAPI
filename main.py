@@ -29,7 +29,7 @@ class Item(BaseModel):
 
 def getLogger(id: str):
     log = logging.getLogger(f'process.{id}')
-    handler = logging.FileHandler(f'{id}.log')
+    handler = logging.FileHandler(f'log-{id}.log')
     fmt = yaml.load(
         open("logging.yml").read(),
         Loader=yaml.SafeLoader)['formatters']['simple_fmt']['format']
