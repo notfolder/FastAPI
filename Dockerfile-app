@@ -1,0 +1,8 @@
+FROM continuumio/miniconda3
+
+COPY fastapi.yml /tmp/
+RUN conda env create -n fastapi -f /tmp/fastapi.yml
+
+COPY mysite /app/mysite/
+ENV CONDA_DEFAULT_ENV fastapi
+CMD ["/bin/bash", "-c", "conda run -n fastapi; cd /app/mysite; conda run -n fastapi python manage.py migrate; /opt/conda/envs/fastapi/bin/gunicorn --bind 0.0.0.0:8000 mysite.wsgi"]
