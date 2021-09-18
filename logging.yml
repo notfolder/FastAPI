@@ -1,0 +1,21 @@
+version: 1
+formatters:
+  simple_fmt:
+    format: '%(process)d - %(asctime)s - %(name)s - %(levelname)s: %(message)s'
+handlers:
+  console_process:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple_fmt
+    stream: ext://sys.stdout
+  file_process:
+    class: logging.FileHandler
+    filename: 'sample.log'
+    level: DEBUG
+    formatter: simple_fmt
+loggers:
+  process:
+    level: DEBUG
+    handlers: [console_process, file_process]
+    propagate: no
+disable_existing_loggers: False
